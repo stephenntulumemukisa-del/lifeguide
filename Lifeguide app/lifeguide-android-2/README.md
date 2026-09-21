@@ -1,4 +1,4 @@
-# LifeGuide Android app
+# LifeGuide Connect Android app
 
 This Android project is a WebView shell for the existing LifeGuide web app. It keeps the current mentor directory, applications, sign-in, admin review, and activation flows in one mobile app surface.
 
