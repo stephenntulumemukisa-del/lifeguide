@@ -1,0 +1,9 @@
+node_modules/
+.env
+lifeguide.sqlite
+lifeguide.sqlite-shm
+lifeguide.sqlite-wal
+uploads/
+**/.gradle/
+**/build/
+*.log
