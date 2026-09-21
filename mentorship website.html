@@ -611,15 +611,16 @@
               <option value="">Choose account level</option>
               <option value="administrator">Administrator</option>
               <option value="mentor">Mentor</option>
+              <option value="mentee">Mentee - find a mentor</option>
             </select>
           </div>
           <div class="profile-field">
             <label for="signInEmail">Email</label>
-            <input id="signInEmail" name="signInEmail" type="email" required placeholder="Enter your account email" />
+            <input id="signInEmail" name="signInEmail" type="email" placeholder="Enter your account email" />
           </div>
           <div class="profile-field">
             <label for="signInPassword">Password</label>
-            <input id="signInPassword" name="signInPassword" type="password" required placeholder="Enter your password" />
+            <input id="signInPassword" name="signInPassword" type="password" placeholder="Enter your password" />
           </div>
           <p id="signInMessage" class="hidden text-sm rounded-lg p-3"></p>
           <button type="submit" class="w-full bg-plant-green text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition">Sign in</button>
@@ -1152,7 +1153,19 @@
         const email = signInEmail.value.trim();
         const password = signInPassword.value;
 
-        if (!level || !email || !password) {
+        if (!level) {
+          showSignInError("Please choose an account level.");
+          return;
+        }
+
+        if (level === "mentee") {
+          setSession("mentee", email || "guest");
+          showMentorDirectory();
+          triggerAction("Welcome to LifeGuide Connect", "Browse active mentors and find the right guidance for your goals.");
+          return;
+        }
+
+        if (!email || !password) {
           showSignInError("Please complete the account level, email, and password fields.");
           return;
         }
